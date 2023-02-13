@@ -1,0 +1,38 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: ./infra/docker/client/Dockerfile
+    volumes:
+      - ./src/client:/opt/app
+    profiles:
+      - dev
+    command: npm run dev
+    ports:
+      - ${VITE_HOST_PORT:-5173}:5173
+  db:
+    build:
+      context: .
+      dockerfile: ./infra/docker/db/Dockerfile
+    volumes:
+      - db-store:/var/lib/mysql
+    ports:
+      - ${DB_HOST_PORT:-13306:3306}
+    environment:
+      - MARIADB_USER=dashboard
+      - MARIADB_PASSWORD=dashboard2023
+      - MARIADB_DATABASE=dashboard
+      - MARIADB_ROOT_PASSWORD=maria
+      - TZ=Asia/Tokyo
+  server:
+    build:
+      context: .
+      dockerfile: ./infra/docker/server/Dockerfile
+    volumes:
+      - ./src//server:/opt/app
+    depends_on:
+      - db
+    ports:
+      - ${SERVER_HOST_PORT:-8000:8000}
+volumes:
+  db-store:

@@ -1,0 +1,8 @@
+{
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/src/server/venv/lib/python3.6/site-packages"
+  ],
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/src/server/venv/lib/python3.6/site-packages"
+  ]
+}
