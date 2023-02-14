@@ -1,3 +1,7 @@
+init-dev:
+	docker compose run --rm client npm install
+	docker compose --profile dev up -d --build
+	docker compose exec server cp .env.example .env
 up:
 	docker compose up -d
 up-dev:
@@ -16,9 +20,7 @@ restart:
 restart-dev:
 	@make down
 	@make up-dev
-.PHONY: client
 client:
-	docker compose run --rm client sh
-.PHONY: server
+	docker compose exec client sh
 server:
 	docker compose exec server bash

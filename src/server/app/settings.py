@@ -18,7 +18,6 @@ from pathlib import Path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 env = environ.Env()
-print(BASE_DIR)
 environ.Env.read_env(Path.joinpath(Path(f'{BASE_DIR}/.env')))
 
 # Quick-start development settings - unsuitable for production
@@ -28,10 +27,15 @@ environ.Env.read_env(Path.joinpath(Path(f'{BASE_DIR}/.env')))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('APP_DEBUG')
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
+CORS_ALLOWED_ORIGINS = env('CORS_ALLOWED_ORIGINS').split(',')
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_HEADER_NAME = 'HTTP_X_CSRF_TOKEN'
 
 # Application definition
 
@@ -42,11 +46,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
