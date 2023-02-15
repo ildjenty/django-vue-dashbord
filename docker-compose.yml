@@ -19,9 +19,9 @@ services:
     ports:
       - ${DB_HOST_PORT:-13306}:3306
     environment:
-      - MARIADB_USER=dashboard
-      - MARIADB_PASSWORD=secret
-      - MARIADB_DATABASE=dashboard
+      - MARIADB_USER=${DB_USERNAME:-dashboard}
+      - MARIADB_PASSWORD=${DB_PASSWORD:-secret}
+      - MARIADB_DATABASE=${DB_NAME:-dashboard}
       - MARIADB_ROOT_PASSWORD=maria
       - TZ=Asia/Tokyo
   server:
