@@ -3,7 +3,6 @@ import { API_URL } from '@/env'
 
 axios.interceptors.request.use((config) => {
   if (config.headers) {
-    console.log(config.headers)
     const token = localStorage.getItem('auth_token')
     config.headers.Authorization = token ? `Bearer ${token}` : ''
   }
@@ -44,9 +43,9 @@ export const get = (url, options = {}) => {
 }
 
 export const post = (url, options) => {
-  return getCSRFToken().then(({ data }) => {
+  return getCSRFToken().then((res) => {
     const config = {
-      headers: { 'X-CSRF-TOKEN': data.token },
+      headers: { 'X-CSRF-TOKEN': res.data.token },
     }
     const { params, onSuccess, onError } = adjustRequestCallOptions(options)
     return axiosClient.post(url, params, config).then(onSuccess).catch(onError)

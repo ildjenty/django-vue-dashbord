@@ -2,6 +2,7 @@ init-dev:
 	docker compose run --rm client npm install
 	docker compose --profile dev up -d --build
 	docker compose exec server cp .env.example .env
+	docker compose exec server cp ./app/local_settings.example.py ./app/local_settings.py
 up:
 	docker compose up -d
 up-dev:
