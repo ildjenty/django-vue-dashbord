@@ -1,5 +1,5 @@
 from django.db.models import (
-    IntegerField,
+    AutoField,
     CharField,
     TextField,
     DateTimeField,
@@ -9,7 +9,7 @@ from django_paranoid.models import ParanoidModel
 
 
 class Server(ParanoidModel):
-    id = IntegerField(primary_key=True)
+    id = AutoField(primary_key=True)
     description = TextField(blank=True, default="")
     ip_address = GenericIPAddressField()
     host_name = CharField(blank=True, default="", max_length=100)

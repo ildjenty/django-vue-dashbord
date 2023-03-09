@@ -1,5 +1,5 @@
 from django.db.models import (
-    IntegerField,
+    AutoField,
     ForeignKey,
     BooleanField,
     TextField,
@@ -7,11 +7,10 @@ from django.db.models import (
     SET_NULL,
 )
 from django_paranoid.models import ParanoidModel
-from app.models import Channel, User
 
 
 class Message(ParanoidModel):
-    id = IntegerField(primary_key=True)
+    id = AutoField(primary_key=True)
     channel = ForeignKey("Channel", on_delete=CASCADE)
     user = ForeignKey("User", on_delete=CASCADE)
     body = TextField()

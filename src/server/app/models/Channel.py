@@ -1,5 +1,5 @@
 from django.db.models import (
-    IntegerField,
+    AutoField,
     CharField,
     BooleanField,
     TextField,
@@ -10,7 +10,7 @@ from django_paranoid.models import ParanoidModel
 
 
 class Channel(ParanoidModel):
-    id = IntegerField(primary_key=True)
+    id = AutoField(primary_key=True)
     name = CharField(max_length=100, default="")
     description = TextField(blank=True, null=True)
     is_archived = BooleanField(default=False)
