@@ -1,7 +1,5 @@
 <template>
-  <div class="home light-base-elm dark:dark-base-elm">
-    メッセージ:{{ message }}
-  </div>
+  <div class="about">メッセージ:{{ message }}</div>
   <button type="button" @click="onClick">クリックしてpost</button>
 </template>
 
@@ -10,7 +8,7 @@ import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 
 export default defineComponent({
-  name: 'Home',
+  name: 'About',
   setup() {
     const { getters, dispatch } = useStore();
     return {

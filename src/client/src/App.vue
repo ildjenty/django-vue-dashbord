@@ -1,20 +1,20 @@
 <template>
-  <div>
+  <div class="dark size-full">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import { defineComponent, onMounted } from 'vue'
-import { useStore } from 'vuex'
+import { defineComponent, onMounted } from 'vue';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'App',
   setup() {
-    const { dispatch } = useStore()
+    const { dispatch } = useStore();
     onMounted(() => {
-      dispatch('fetchMessage')
-    })
+      dispatch('fetchMessage');
+    });
   },
-})
+});
 </script>

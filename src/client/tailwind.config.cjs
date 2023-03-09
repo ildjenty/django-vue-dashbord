@@ -7,7 +7,16 @@ module.exports = {
     './src/*.{js,vue}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'main-primary': '#42b883',
+        'main-secondary': '#187f58',
+        'light-primary': '#ededed',
+        'light-secondary': '#cacaca',
+        'dark-primary': '#2a2a2a',
+        'dark-secondary': '#3a3a3a',
+      },
+    },
   },
-  plugins: [],
-}
+  darkMode: 'class',
+};

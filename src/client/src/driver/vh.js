@@ -4,12 +4,12 @@ export default {
       return {
         type: Boolean,
         required: true,
-      }
+      };
     } else {
       return {
         type: Boolean,
         default: default_,
-      }
+      };
     }
   },
 
@@ -18,12 +18,12 @@ export default {
       return {
         type: Number,
         required: true,
-      }
+      };
     } else {
       return {
         type: Number,
         default: default_,
-      }
+      };
     }
   },
 
@@ -32,12 +32,12 @@ export default {
       return {
         type: String,
         required: true,
-      }
+      };
     } else {
       return {
         type: String,
         default: default_,
-      }
+      };
     }
   },
 
@@ -46,14 +46,14 @@ export default {
       return {
         type: Array,
         required: true,
-      }
+      };
     } else {
       return {
         type: Array,
         default() {
-          return default_
+          return default_;
         },
-      }
+      };
     }
   },
 
@@ -62,14 +62,14 @@ export default {
       return {
         type: Object,
         required: true,
-      }
+      };
     } else {
       return {
         type: Object,
         default() {
-          return default_
+          return default_;
         },
-      }
+      };
     }
   },
 
@@ -78,12 +78,12 @@ export default {
       return {
         type: Function,
         required: true,
-      }
+      };
     } else {
       return {
         type: Function,
         default: default_,
-      }
+      };
     }
   },
 
@@ -92,19 +92,19 @@ export default {
       return {
         required: true,
         validator(any) {
-          return any instanceof constructor
+          return any instanceof constructor;
         },
-      }
+      };
     } else {
       if (default_ !== null && default_ instanceof constructor) {
-        throw 'The default value of instance props must be instance.'
+        throw 'The default value of instance props must be instance.';
       }
       return {
         required: false,
         validator(any) {
-          return any instanceof constructor
+          return any instanceof constructor;
         },
-      }
+      };
     }
   },
 
@@ -113,23 +113,23 @@ export default {
       return {
         type: typesArray,
         required: true,
-      }
+      };
     } else {
       return {
         type: typesArray,
         default: default_,
-      }
+      };
     }
   },
 
   includeValid(type, array, required) {
-    if (required === undefined) required = true
+    if (required === undefined) required = true;
     return {
       type,
       required,
       validator(val) {
-        return array.includes(val)
+        return array.includes(val);
       },
-    }
+    };
   },
-}
+};

@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .light-base-elm {
+    @apply bg-white text-black;
+  }
+
+  .dark-base-elm {
+    @apply bg-dark-primary text-white;
+  }
+
+  .primary-elm {
+    @apply bg-vue-secondary text-white;
+  }
+
+  .size-screen {
+    @apply w-screen h-screen;
+  }
+
+  .size-full {
+    @apply w-full h-full;
+  }
+
+  .flex-center-box {
+    @apply flex justify-center items-center;
+  }
+
+  .top-left-0 {
+    @apply top-0 left-0;
+  }
+}
+
+@layer utilities {
+  .border-b-main-primary {
+    @apply border-solid border-b border-main-primary;
+  }
+}

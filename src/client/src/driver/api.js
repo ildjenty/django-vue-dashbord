@@ -1,13 +1,5 @@
-import axios from 'axios'
-import { API_URL } from '@/env'
-
-axios.interceptors.request.use((config) => {
-  if (config.headers) {
-    const token = localStorage.getItem('auth_token')
-    config.headers.Authorization = token ? `Bearer ${token}` : ''
-  }
-  return config
-})
+import axios from 'axios';
+import { API_URL } from '@/env';
 
 const axiosClient = axios.create({
   baseURL: API_URL,
@@ -17,37 +9,37 @@ const axiosClient = axios.create({
   },
   responseType: 'json',
   withCredentials: true,
-})
+});
 
-const getCSRFToken = () => axiosClient.get('/api/csrf_token')
+const getCSRFToken = () => axiosClient.get('/api/csrf_token');
 
 const adjustRequestCallOptions = ({ params, onSuccess, onError }) => {
-  params = typeof params === 'object' ? params : {}
-  onSuccess = typeof onSuccess === 'function' ? onSuccess : (res) => res
+  params = typeof params === 'object' ? params : {};
+  onSuccess = typeof onSuccess === 'function' ? onSuccess : (res) => res;
   onError =
     typeof onError === 'function'
       ? onError
       : (e) => {
-          throw e
-        }
+          throw e;
+        };
   return {
     params,
     onSuccess,
     onError,
-  }
-}
+  };
+};
 
 export const get = (url, options = {}) => {
-  const { params, onSuccess, onError } = adjustRequestCallOptions(options)
-  return axiosClient.get(url, { params }).then(onSuccess).catch(onError)
-}
+  const { params, onSuccess, onError } = adjustRequestCallOptions(options);
+  return axiosClient.get(url, { params }).then(onSuccess).catch(onError);
+};
 
-export const post = (url, options) => {
+export const post = (url, options = {}) => {
   return getCSRFToken().then((res) => {
     const config = {
       headers: { 'X-CSRF-TOKEN': res.data.token },
-    }
-    const { params, onSuccess, onError } = adjustRequestCallOptions(options)
-    return axiosClient.post(url, params, config).then(onSuccess).catch(onError)
-  })
-}
+    };
+    const { params, onSuccess, onError } = adjustRequestCallOptions(options);
+    return axiosClient.post(url, params, config).then(onSuccess).catch(onError);
+  });
+};
