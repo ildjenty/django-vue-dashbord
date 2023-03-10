@@ -1,4 +1,4 @@
-from app.drivers.constant import Constant
+from .base import Constant
 
 
 class ServerStatus(Constant):
