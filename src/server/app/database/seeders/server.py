@@ -1,5 +1,5 @@
 from app.models import Server
-from app.constants import ServerStatus
+from constants import ServerStatus
 
 
 def exec():
