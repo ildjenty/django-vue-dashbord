@@ -8,8 +8,7 @@
 import { onMounted } from 'vue';
 import useAppInit from '@/composables/useAppInit';
 
-const { provideAppInitPath, resolveInitialPage } = useAppInit();
-provideAppInitPath();
+const { resolveInitialPage } = useAppInit();
 
 onMounted(() => {
   resolveInitialPage();
