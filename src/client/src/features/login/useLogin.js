@@ -1,6 +1,7 @@
 import { reactive } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
+import { initialPageResolver } from '@/composables/useAppInit';
 
 export default () => {
   const { dispatch } = useStore();
@@ -25,8 +26,8 @@ export default () => {
         loginId: formState.loginId,
         password: formState.password,
       },
-    }).then(() => {
-      router.push('/home');
+    }).then((data) => {
+      initialPageResolver(data, router);
     });
   };
 

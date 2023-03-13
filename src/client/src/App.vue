@@ -5,8 +5,13 @@
 </template>
 
 <script setup>
-import { useAppEntryPath } from './composables/useAppEntryPath';
+import { onMounted } from 'vue';
+import useAppInit from '@/composables/useAppInit';
 
-const { provideAppEntryPath } = useAppEntryPath();
-provideAppEntryPath();
+const { provideAppInitPath, resolveInitialPage } = useAppInit();
+provideAppInitPath();
+
+onMounted(() => {
+  resolveInitialPage();
+});
 </script>

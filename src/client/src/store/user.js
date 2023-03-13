@@ -1,4 +1,4 @@
-import { post } from '@/driver/api';
+import { get, post } from '@/driver/api';
 
 export default {
   namespaced: true,
@@ -20,11 +20,11 @@ export default {
       state,
       {
         isAuthenticated,
-        loginId,
-        firstName,
-        lastName,
-        enFirstName,
-        enLastName,
+        loginId = '',
+        firstName = '',
+        lastName = '',
+        enFirstName = '',
+        enLastName = '',
       },
     ) {
       state.isAuthenticated = isAuthenticated;
@@ -38,7 +38,14 @@ export default {
   actions: {
     async login({ commit }, payload) {
       return post('/api/login', payload).then((res) => {
-        commit('setUserState', { ...payload, ...res.data });
+        commit('setUserState', res.data);
+        return res.data;
+      });
+    },
+    async sessionCheck({ commit }) {
+      return get('/api/session_check').then((res) => {
+        commit('setUserState', res.data);
+        return res.data;
       });
     },
   },
