@@ -29,7 +29,7 @@ seeder:
 server-app-init:
 	docker compose exec server python3 manage.py app_init
 create-local-venv:
-	docker compose exec server /bin/bash -c "rm -r venv && python3 -m venv venv && source ./venv/bin/activate && pip3 install -r requirements.txt"
+	docker compose exec server /bin/bash -c "rm -rf venv && python3 -m venv venv && source ./venv/bin/activate && pip3 install -r requirements.txt"
 init-dev:
 	@make build-nc
 	docker compose run --rm client npm install
