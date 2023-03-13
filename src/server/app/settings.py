@@ -14,6 +14,7 @@ import os
 import environ
 from pathlib import Path
 from corsheaders.defaults import default_headers
+from logging import INFO
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "app.middleware.request.RequestDetailLogMiddleware",
 ]
 
 ROOT_URLCONF = "app.urls"
@@ -139,6 +141,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+
+
+# logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "loggers": {
+        "app.middleware.request": {
+            "handlers": ["request_log"],
+            "level": INFO,
+        },
+    },
+    "handlers": {
+        "request_log": {
+            "class": "logging.FileHandler",
+            "filename": os.path.join(str(BASE_DIR), "app/storage/logs/request.log"),
+            "level": INFO,
+            "formatter": "default_formatter",
+        },
+    },
+    "formatters": {
+        "default_formatter": {
+            "format": "%(asctime)s [%(levelname)s] %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+        },
+    },
+}
+
 
 try:
     from .local_settings import *

@@ -32,7 +32,17 @@ services:
       - ./src/server:/opt/app
     depends_on:
       - db
+    expose:
+      - "8000"
+    command: uwsgi --socket :8000 --module app.wsgi
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./infra/docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./infra/docker/nginx/uwsgi_params:/etc/nginx/uwsgi_params
+    depends_on:
+      - server
     ports:
-      - ${SERVER_HOST_PORT:-8000}:8000
+      - ${SERVER_HOST_PORT:-8000}:80
 volumes:
   db-store:
