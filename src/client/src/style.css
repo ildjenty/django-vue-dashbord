@@ -52,7 +52,7 @@
 
   /* layout */
   .page {
-    @apply h-[calc(100%_-_3.5rem)] p-4;
+    @apply h-[calc(100%_-_3.5rem)] p-4 overflow-scroll;
   }
 
   .basic-page {
@@ -88,7 +88,7 @@
 
 @layer components {
   .login-page {
-    @apply py-28 flex flex-col gap-10 justify-start items-center;
+    @apply py-8 flex flex-col gap-4 justify-start items-center;
   }
 
   .login-form {
