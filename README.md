@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - `docker` & `docker-compose` be installed.
-- `Make` be installed
+- `Make` be installed.
 
 ## Setup
 
