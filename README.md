@@ -9,7 +9,7 @@
 
 Run `make init-dev` in the repository root.
 
-Errors may occur in `@make migrate` & `@make server-init-app`, in which case re-run from terminal.
+Errors may occur in `@make migrate` & `@make server-init-app`, in which case re-run from CLI.
 
 Check `Makefile` for details.
 
