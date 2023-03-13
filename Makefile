@@ -37,7 +37,7 @@ init-dev:
 	docker compose exec server cp .env.example .env
 	docker compose exec server cp ./app/local_settings.example.py ./app/local_settings.py
 	docker compose exec server touch -c ./app/storage/logs/request.log
-	@create-local-venv
+	@make create-local-venv
 	@make migrate
 	@make server-app-init
 	@make restart-dev
