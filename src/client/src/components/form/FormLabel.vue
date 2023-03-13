@@ -2,14 +2,10 @@
   <label class="form-label">{{ label }}</label>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
+<script setup>
 import { stringProps } from '@/driver/vh';
 
-export default defineComponent({
-  name: 'FormLabel',
-  props: {
-    label: stringProps(),
-  },
+const props = defineProps({
+  label: stringProps(),
 });
 </script>

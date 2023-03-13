@@ -51,6 +51,7 @@ export const post = (url, options = {}) => {
       ...defaultRequestOptions,
       ...options,
     };
+    console.log(params);
     validateRequestCallOptions({ params, onSuccess, onError });
     return axiosClient.post(url, params, config).then(onSuccess).catch(onError);
   });

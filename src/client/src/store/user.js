@@ -1,16 +1,45 @@
+import { post } from '@/driver/api';
+
 export default {
   namespaced: true,
   state: {
     isAuthenticated: false,
-    login_id: '',
-    first_name: '',
-    last_name: '',
-    en_first_ame: '',
-    en_last_name: '',
+    loginId: '',
+    firstName: '',
+    lastName: '',
+    enFirstName: '',
+    enLastName: '',
   },
   getters: {
     greetingMessage(state) {
-      return `ようこそ${state.last_name}${state.first_name}さん`;
+      return `ようこそ${state.lastName}${state.firstName}さん`;
+    },
+  },
+  mutations: {
+    setUserState(
+      state,
+      {
+        isAuthenticated,
+        loginId,
+        firstName,
+        lastName,
+        enFirstName,
+        enLastName,
+      },
+    ) {
+      state.isAuthenticated = isAuthenticated;
+      state.loginId = loginId;
+      state.firstName = firstName;
+      state.lastName = lastName;
+      state.enFirstName = enFirstName;
+      state.enLastName = enLastName;
+    },
+  },
+  actions: {
+    async login({ commit }, payload) {
+      return post('/api/login', payload).then((res) => {
+        commit('setUserState', { ...payload, ...res.data });
+      });
     },
   },
 };

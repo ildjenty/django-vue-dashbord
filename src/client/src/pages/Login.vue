@@ -6,6 +6,6 @@
 </template>
 
 <script setup>
-import LoginForm from '@/features/LoginForm.vue';
-import TechLibraries from '@/components/desgin/TechLibraries.vue';
+import LoginForm from '@/features/login/LoginForm.vue';
+import TechLibraries from '@/components/design/TechLibraries.vue';
 </script>

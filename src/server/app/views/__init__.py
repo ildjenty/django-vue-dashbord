@@ -1,2 +1,2 @@
 from .CsrfTokenView import CsrfTokenView
-from .MessageView import MessageView
+from .LoginView import LoginView

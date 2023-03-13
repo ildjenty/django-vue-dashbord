@@ -10,12 +10,14 @@ class Command(BaseCommand):
         seeders.priority.exec()
         seeders.role.exec()
 
-        User.objects.create(
+        user = User(
             login_id="admin",
             first_name="管理者",
             last_name="システム",
             en_first_name="Admin",
             en_last_name="System",
             is_superuser=True,
-            password="dashboard2023",
         )
+
+        user.set_password("dashboard2023")
+        user.save()

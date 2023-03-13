@@ -3,9 +3,9 @@
     <form method="post" class="login-form" @submit.prevent="dispatchLogin">
       <InputFormControl
         :type="'text'"
-        :name="'login_id'"
+        :name="'username'"
         :label="'ログインID'"
-        :value="formState.login_id"
+        :value="formState.loginId"
         :direction="'col'"
         @change="setLoginId"
       />
@@ -17,32 +17,18 @@
         :direction="'col'"
         @change="setPassword"
       />
-      <BaseButton :type="'button'" :onClick="dispatchLogin"
-        >ログイン</BaseButton
+      <PrimaryButton :type="'button'" :onClick="dispatchLogin"
+        >ログイン</PrimaryButton
       >
     </form>
   </SectionContainer>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
 import SectionContainer from '@/components/layout/SectionContainer.vue';
 import InputFormControl from '@/components/form/InputFormControl.vue';
-import BaseButton from '@/components/button/BaseButton.vue';
+import PrimaryButton from '@/components/button/PrimaryButton.vue';
+import useLogin from './useLogin';
 
-const formState = reactive({
-  login_id: '',
-  password: '',
-});
-
-const setLoginId = (value) => {
-  formState.login_id = value;
-};
-const setPassword = (value) => {
-  formState.password = value;
-};
-
-const dispatchLogin = () => {
-  console.log('ログイン');
-};
+const { formState, setLoginId, setPassword, dispatchLogin } = useLogin();
 </script>

@@ -1,7 +1,11 @@
 from django.db.models import CharField, AutoField, ForeignKey, SET_NULL
 from django.contrib.auth.models import PermissionsMixin
-from django.contrib.auth.base_user import AbstractBaseUser
-from django_paranoid.models import ParanoidModel
+from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+from django_paranoid.models import ParanoidModel, ParanoidModelManager
+
+
+class UserManager(ParanoidModelManager, BaseUserManager):
+    pass
 
 
 class User(AbstractBaseUser, PermissionsMixin, ParanoidModel):
@@ -15,3 +19,5 @@ class User(AbstractBaseUser, PermissionsMixin, ParanoidModel):
     role = ForeignKey("Role", blank=True, null=True, on_delete=SET_NULL)
 
     USERNAME_FIELD = "login_id"
+
+    objects = UserManager()

@@ -1,11 +1,12 @@
 <template>
-  <button class="base-button" :type="type" @click="onClick">
+  <BaseButton class="base-button bg-main-primary" :type="type" @click="onClick">
     <slot></slot>
-  </button>
+  </BaseButton>
 </template>
 
 <script setup>
 import { unionProps, funcProps } from '@/driver/vh';
+import BaseButton from './BaseButton.vue';
 
 const props = defineProps({
   type: unionProps(String, ['button', 'submit']),

@@ -1,25 +1,15 @@
 <template>
-  <div class="home light-base-elm dark:dark-base-elm">
-    メッセージ:{{ message }}
+  <div class="non-navigation-page">
+    <div>{{ greetingMessage }}</div>
   </div>
-  <button type="button" @click="onClick">クリックしてpost</button>
 </template>
 
-<script>
-import { defineComponent, computed } from 'vue';
+<script setup>
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
-export default defineComponent({
-  name: 'Home',
-  setup() {
-    const { getters, dispatch } = useStore();
-    return {
-      message: computed(() => getters.message),
-      onClick() {
-        dispatch('sendDateTime');
-      },
-      changeValue,
-    };
-  },
+const store = useStore();
+const greetingMessage = computed(() => {
+  return store.getters['user/greetingMessage'];
 });
 </script>
