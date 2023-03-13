@@ -2,6 +2,8 @@ from app.models import Role
 
 
 def exec():
+    Role.objects.all().delete()
+
     default_roles = [
         Role(name="Manager", order=1),
         Role(name="Maintainer", order=2),

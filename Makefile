@@ -20,10 +20,21 @@ client:
 	docker compose exec client sh
 server:
 	docker compose exec server bash
+migrate:
+	docker compose exec server python3 manage.py migrate
+makemigrations:
+	docker compose exec server python3 manage.py makemigrations app
+seeder:
+	docker compose exec server python3 manage.py seeder
+server-app-init:
+	docker compose exec server python3 manage.py app_init
 init-dev:
 	@make build-nc
 	docker compose run --rm client npm install
 	docker compose --profile dev up -d --build
 	docker compose exec server cp .env.example .env
 	docker compose exec server cp ./app/local_settings.example.py ./app/local_settings.py
+	docker compose exec server touch -c ./app/storage/logs/request.log
+	@make migrate
+	@make server-app-init
 	@make restart-dev

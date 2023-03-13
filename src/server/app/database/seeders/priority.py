@@ -2,6 +2,8 @@ from app.models import Priority
 
 
 def exec():
+    Priority.objects.all().delete()
+
     default_priorities = [
         Priority(name="高", order=1),
         Priority(name="通常", order=2),
