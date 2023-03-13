@@ -1,7 +1,5 @@
 <template>
-  <header
-    class="flex h-14 p-3 light-base-elm dark:dark-base-elm border-b-main-primary"
-  >
+  <header class="flex h-14 p-3 base-elm border-b-2 border-b-main-primary">
     <div class="text-2xl">Dashboard</div>
   </header>
 </template>

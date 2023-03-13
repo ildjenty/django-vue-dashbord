@@ -18,6 +18,7 @@ export default defineComponent({
       onClick() {
         dispatch('sendDateTime');
       },
+      changeValue,
     };
   },
 });

@@ -12,14 +12,18 @@
     "vue": "3.2.45"
   },
   "devDependencies": {
+    "@headlessui/vue": "^1.7.12",
     "@vitejs/plugin-vue": "4.0.0",
     "apexcharts": "3.37.0",
     "autoprefixer": "10.4.13",
     "axios": "1.3.2",
     "postcss": "8.4.21",
+    "sass": "^1.59.2",
     "tailwindcss": "3.2.6",
+    "vee-validate": "^4.7.4",
     "vite": "4.1.0",
     "vite-jsconfig-paths": "2.0.1",
+    "vue-fa": "^4.0.1",
     "vue-perfect-scrollbar": "0.2.1",
     "vue-router": "4.1.6",
     "vuex": "4.1.0"

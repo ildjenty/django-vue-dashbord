@@ -13,24 +13,32 @@ const axiosClient = axios.create({
 
 const getCSRFToken = () => axiosClient.get('/api/csrf_token');
 
-const adjustRequestCallOptions = ({ params, onSuccess, onError }) => {
-  params = typeof params === 'object' ? params : {};
-  onSuccess = typeof onSuccess === 'function' ? onSuccess : (res) => res;
-  onError =
-    typeof onError === 'function'
-      ? onError
-      : (e) => {
-          throw e;
-        };
-  return {
-    params,
-    onSuccess,
-    onError,
-  };
+const validateRequestCallOptions = ({ params, onSuccess, onError }) => {
+  if (typeof params !== 'object') {
+    throw new Error('"params" is not a object');
+  }
+  if (typeof onSuccess !== 'function') {
+    throw new Error('"onSuccess" is not a function');
+  }
+  if (typeof onError !== 'function') {
+    throw new Error('"onError" is not a function');
+  }
+};
+
+const defaultRequestOptions = {
+  params: {},
+  onSuccess: (res) => res,
+  onError: (e) => {
+    throw e;
+  },
 };
 
 export const get = (url, options = {}) => {
-  const { params, onSuccess, onError } = adjustRequestCallOptions(options);
+  const { params, onSuccess, onError } = {
+    ...defaultRequestOptions,
+    ...options,
+  };
+  validateRequestCallOptions({ params, onSuccess, onError });
   return axiosClient.get(url, { params }).then(onSuccess).catch(onError);
 };
 
@@ -39,7 +47,11 @@ export const post = (url, options = {}) => {
     const config = {
       headers: { 'X-CSRF-TOKEN': res.data.token },
     };
-    const { params, onSuccess, onError } = adjustRequestCallOptions(options);
+    const { params, onSuccess, onError } = {
+      ...defaultRequestOptions,
+      ...options,
+    };
+    validateRequestCallOptions({ params, onSuccess, onError });
     return axiosClient.post(url, params, config).then(onSuccess).catch(onError);
   });
 };

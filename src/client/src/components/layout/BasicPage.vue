@@ -1,13 +1,13 @@
 <template>
-  <div class="size-full light-base-elm dark:dark-base-elm">
+  <div class="base-elm size-full">
     <PageHeader />
-    <router-view />
+    <RouterView />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import PageHeader from './PageHeader.vue';
+import PageHeader from '@/components//layout/PageHeader.vue';
 
 export default defineComponent({
   name: 'BasicPage',
