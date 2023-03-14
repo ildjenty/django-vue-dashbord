@@ -73,7 +73,7 @@
   }
 
   .form-value {
-    @apply w-full basis-full block box-border h-8 px-1 py-0.5 outline-0 rounded-md border-solid border border-support-primary focus:outline-0 focus:border-2 focus:border-light-accent dark:focus:border-dark-accent;
+    @apply w-full basis-full block box-border h-8 px-1 py-0.5 outline-0 rounded-md border-solid border border-support-primary focus:px-0.5 focus:py-0 focus:outline-0 focus:border-2 focus:border-light-accent dark:focus:border-dark-accent;
   }
 
   .form-control {

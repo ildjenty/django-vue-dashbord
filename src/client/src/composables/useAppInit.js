@@ -2,12 +2,17 @@ import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 
 export const appInitPath = `${location.pathname}${location.search}${location.hash}`;
+
+export const noLoginPathList = ['/login'];
+
+export const isRequireLogin = !noLoginPathList.includes(appInitPath);
+
 export const initialPageResolver = (data, router) => {
   if (data.isAuthenticated) {
-    if (appInitPath === '/login') {
-      router.push('/home');
-    } else {
+    if (isRequireLogin) {
       router.push(appInitPath);
+    } else {
+      router.push('/home');
     }
   } else {
     router.push('/login');
@@ -25,7 +30,7 @@ export default () => {
   };
 
   return {
-    appInitPath,
+    isRequireLogin,
     resolveInitialPage,
   };
 };
