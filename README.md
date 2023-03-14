@@ -13,7 +13,7 @@ Errors may occur in `@make migrate` & `@make server-init-app`, in which case re-
 
 Check `Makefile` for details.
 
-# Start of development
+## Start of development
 
 After Setup is completed, access http://localhost:5173/login.
 
