@@ -97,7 +97,7 @@ export const instanceProps = (constructor, default_) => {
     };
   } else {
     if (default_ !== null && default_ instanceof constructor) {
-      throw 'The default value of instance props must be instance.';
+      throw new Error('The default value of instance props must be instance.');
     }
     return {
       required: false,
