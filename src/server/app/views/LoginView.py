@@ -2,7 +2,7 @@ from django.views import View
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 import json
-from app.presenters.user import create_user_auth_data
+from app.presenters.user import create_authenticated_user_data
 
 
 class LoginView(View):
@@ -15,7 +15,7 @@ class LoginView(View):
         if user is not None:
             login(request, user)
             return JsonResponse(
-                data=create_user_auth_data(user, True),
+                data=create_authenticated_user_data(user, True),
                 status=200,
             )
 

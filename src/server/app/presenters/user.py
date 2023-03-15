@@ -1,7 +1,7 @@
 from app.models import User
 
 
-def create_user_auth_data(user: User, is_authenticated: bool) -> dict:
+def create_authenticated_user_data(user: User, is_authenticated: bool) -> dict:
     return {
         "isAuthenticated": is_authenticated,
         "loginId": user.login_id,

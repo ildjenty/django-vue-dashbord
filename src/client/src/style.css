@@ -24,8 +24,8 @@
   }
 }
 
-@layer base {
-  /* atom */
+@layer components {
+  /* theme */
   .light-base-elm {
     @apply bg-white text-black;
   }
@@ -84,9 +84,8 @@
   .base-button {
     @apply h-8 box-border rounded-md focus:outline-0 focus:border-2 focus:border-light-accent dark:focus:border-dark-accent;
   }
-}
 
-@layer components {
+  /* feature */
   .login-page {
     @apply py-8 flex flex-col gap-4 justify-start items-center;
   }

@@ -1,7 +1,7 @@
 import { reactive } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
-import { initialPageResolver } from '@/composables/useAppInit';
+import { resolveInitialPage } from '@/composables/useAppInit';
 
 export default () => {
   const { dispatch } = useStore();
@@ -27,7 +27,7 @@ export default () => {
         password: formState.password,
       },
     }).then((data) => {
-      initialPageResolver(data, router);
+      resolveInitialPage(data, router);
     });
   };
 

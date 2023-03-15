@@ -8,9 +8,9 @@
 import { onMounted } from 'vue';
 import useAppInit from '@/composables/useAppInit';
 
-const { isRequireLogin, resolveInitialPage } = useAppInit();
+const { isRequireLogin, dispatchResolveInitialPage } = useAppInit();
 
 onMounted(() => {
-  if (isRequireLogin) resolveInitialPage();
+  if (isRequireLogin) dispatchResolveInitialPage();
 });
 </script>

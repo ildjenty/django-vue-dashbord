@@ -7,7 +7,7 @@ export const noLoginPathList = ['/login'];
 
 export const isRequireLogin = !noLoginPathList.includes(appInitPath);
 
-export const initialPageResolver = (data, router) => {
+export const resolveInitialPage = (data, router) => {
   if (data.isAuthenticated) {
     if (isRequireLogin) {
       router.push(appInitPath);
@@ -23,14 +23,14 @@ export default () => {
   const { dispatch } = useStore();
   const router = useRouter();
 
-  const resolveInitialPage = async () => {
+  const dispatchResolveInitialPage = async () => {
     dispatch('user/sessionCheck').then((data) => {
-      initialPageResolver(data, router);
+      resolveInitialPage(data, router);
     });
   };
 
   return {
     isRequireLogin,
-    resolveInitialPage,
+    dispatchResolveInitialPage,
   };
 };
