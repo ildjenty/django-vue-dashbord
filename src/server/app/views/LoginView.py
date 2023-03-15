@@ -15,7 +15,7 @@ class LoginView(View):
         if user is not None:
             login(request, user)
             return JsonResponse(
-                data=create_authenticated_user_data(user, True),
+                data=create_authenticated_user_data(user),
                 status=200,
             )
 

@@ -42,6 +42,8 @@ CSRF_HEADER_NAME = "HTTP_X_CSRF_TOKEN"
 
 AUTH_USER_MODEL = "app.User"
 
+LOGIN_URL = "/login"
+
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.auth",

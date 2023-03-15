@@ -9,7 +9,7 @@ class SessionCheckView(View):
 
         if user.is_authenticated:
             return JsonResponse(
-                data=create_authenticated_user_data(user, True),
+                data=create_authenticated_user_data(user),
                 status=200,
             )
 
