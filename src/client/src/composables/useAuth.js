@@ -31,10 +31,17 @@ export default () => {
     });
   };
 
+  const dispatchLogout = () => {
+    dispatch('user/logout').then(() => {
+      router.push('/login');
+    });
+  };
+
   return {
     formState,
     setLoginId,
     setPassword,
     dispatchLogin,
+    dispatchLogout,
   };
 };

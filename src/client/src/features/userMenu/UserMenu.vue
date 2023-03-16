@@ -10,7 +10,7 @@
       <MenuItem :as="'li'">
         <button
           type="button"
-          class="w-full flex gap-2 items-center p-1 rounded-md text-left hover:bg-main-primary"
+          class="w-full flex gap-2 items-center py-1 px-2 rounded-md text-left hover:bg-main-primary"
         >
           <ProfileEditIcon size="sm" />プロフィール
         </button>
@@ -18,7 +18,8 @@
       <MenuItem :as="'li'">
         <button
           type="button"
-          class="w-full flex gap-2 items-center p-1 rounded-md text-left hover:bg-main-primary"
+          class="w-full flex gap-2 items-center py-1 px-2 rounded-md text-left hover:bg-main-primary"
+          @click="dispatchLogout"
         >
           <LogoutIcon size="sm" />ログアウト
         </button>
@@ -31,4 +32,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import AnonymousUserIcon from '@/components/icon/AnonymousUserIcon.vue';
 import LogoutIcon from '@/components/icon/LogoutIcon.vue';
 import ProfileEditIcon from '@/components/icon/ProfileEditIcon.vue';
+import useAuth from '@/composables/useAuth';
+
+const { dispatchLogout } = useAuth();
 </script>

@@ -28,7 +28,7 @@
 import SectionContainer from '@/components/layout/SectionContainer.vue';
 import InputFormControl from '@/components/form/InputFormControl.vue';
 import PrimaryButton from '@/components/button/PrimaryButton.vue';
-import useLogin from './useLogin';
+import useAuth from '@/composables/useAuth';
 
-const { formState, setLoginId, setPassword, dispatchLogin } = useLogin();
+const { formState, setLoginId, setPassword, dispatchLogin } = useAuth();
 </script>

@@ -3,8 +3,18 @@ import './style.css';
 import App from './App.vue';
 import store from '@/store';
 import router from '@/router';
-import { addComponent } from './fonteawesome.js';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+  faCircleUser,
+  faUserPen,
+  faRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
 
-const app = createApp(App).use(store).use(router);
-addComponent(app);
-app.mount('#app');
+library.add(faCircleUser, faUserPen, faRightFromBracket);
+
+createApp(App)
+  .component('FAI', FontAwesomeIcon)
+  .use(store)
+  .use(router)
+  .mount('#app');
