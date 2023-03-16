@@ -7,7 +7,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import PageHeader from '@/components//layout/PageHeader.vue';
+import PageHeader from '@/components/layout/PageHeader.vue';
 
 export default defineComponent({
   name: 'BasicPage',

@@ -1,0 +1,34 @@
+<template>
+  <Menu>
+    <MenuButton :class="'ml-auto'">
+      <AnonymousUserIcon size="2xl" />
+    </MenuButton>
+    <MenuItems
+      :as="'ul'"
+      :class="'base-secondary-elm drop-shadow-lg absolute right-0 mt-10 mr-2 p-2 rounded-md'"
+    >
+      <MenuItem :as="'li'">
+        <button
+          type="button"
+          class="w-full flex gap-2 items-center p-1 rounded-md text-left hover:bg-main-primary"
+        >
+          <ProfileEditIcon size="sm" />プロフィール
+        </button>
+      </MenuItem>
+      <MenuItem :as="'li'">
+        <button
+          type="button"
+          class="w-full flex gap-2 items-center p-1 rounded-md text-left hover:bg-main-primary"
+        >
+          <LogoutIcon size="sm" />ログアウト
+        </button>
+      </MenuItem>
+    </MenuItems>
+  </Menu>
+</template>
+<script setup>
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
+import AnonymousUserIcon from '@/components/icon/AnonymousUserIcon.vue';
+import LogoutIcon from '@/components/icon/LogoutIcon.vue';
+import ProfileEditIcon from '@/components/icon/ProfileEditIcon.vue';
+</script>

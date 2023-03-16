@@ -34,17 +34,31 @@ export default {
       state.enFirstName = enFirstName;
       state.enLastName = enLastName;
     },
+    resetUserState(state) {
+      state.isAuthenticated = false;
+      state.loginId = '';
+      state.firstName = '';
+      state.lastName = '';
+      state.enFirstName = '';
+      state.enLastName = '';
+    },
   },
   actions: {
+    async sessionCheck({ commit }) {
+      return get('/api/session_check').then((res) => {
+        commit('setUserState', res.data);
+        return res.data;
+      });
+    },
     async login({ commit }, payload) {
       return post('/api/login', payload).then((res) => {
         commit('setUserState', res.data);
         return res.data;
       });
     },
-    async sessionCheck({ commit }) {
-      return get('/api/session_check').then((res) => {
-        commit('setUserState', res.data);
+    async logout({ commit }) {
+      return post('/api/logout').then((res) => {
+        commit('resetUserState');
         return res.data;
       });
     },
