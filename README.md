@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-- `docker` & `docker-compose` be installed.
-- `Make` be installed.
+- Installed `docker` & `docker-compose`.
+- Installed `Make`.
 
 ## Setup
 
