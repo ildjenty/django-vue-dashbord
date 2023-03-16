@@ -1,5 +1,5 @@
 <template>
-  <Menu>
+  <Menu v-if="isAuthenticated">
     <MenuButton :class="'ml-auto'">
       <AnonymousUserIcon size="2xl" />
     </MenuButton>
@@ -33,6 +33,8 @@ import AnonymousUserIcon from '@/components/icon/AnonymousUserIcon.vue';
 import LogoutIcon from '@/components/icon/LogoutIcon.vue';
 import ProfileEditIcon from '@/components/icon/ProfileEditIcon.vue';
 import useAuth from '@/composables/useAuth';
+import useUserState from '@/composables/useUserState';
 
 const { dispatchLogout } = useAuth();
+const { isAuthenticated } = useUserState();
 </script>
