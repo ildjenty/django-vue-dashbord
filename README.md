@@ -19,5 +19,5 @@ After Setup is completed, access http://localhost:5173/login.
 
 The administrator's login information is as follows
 
-- login_id...`admin`
-- password...`dashboard2023`
+- LoginID...`admin`
+- Password...`dashboard2023`
